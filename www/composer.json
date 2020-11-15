@@ -1,0 +1,29 @@
+{
+    "name": "nine/www",
+    "type": "project",
+    "authors": [
+        {
+            "name": "nine",
+            "email": "yupitereu@hanmail.net"
+        }
+    ],
+    "require": {
+        "slim/slim": "3.*",
+        "slim/php-view": "^2.2"
+    },
+    "scripts": {
+        "serve": "php -S localhost:8888"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "process-timeout": 3600
+    },
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "libraries\\": "libraries/",
+            "services\\": "services/",
+            "utils\\": "utils/"
+        }
+    }
+}

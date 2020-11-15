@@ -1,0 +1,8 @@
+PHP_FLAG register_globals ON
+PHP_VALUE mysql.default_charset UTF8
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/assets/*
+RewriteCond %{REQUEST_URI} !^/dist/*
+RewriteCond %{REQUEST_URI} !^/index.php
+RewriteRule . /index.php [L]
