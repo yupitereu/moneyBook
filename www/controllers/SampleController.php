@@ -1,16 +1,26 @@
 <?php
 namespace controllers;
 
+use libraries\DatabaseLibrary;
+use Psr\Container\ContainerInterface;
 use utils\logUtil;
+use utils\singletonUtil;
 
 class SampleController {
 	use logUtil;
+	use singletonUtil;
 
-	public function __construct() {
-		$this->infoLog('call Sample');
+	protected $container, $view, $pdo;
+	private $databaseLibrary;
+
+	public function __construct(ContainerInterface $container) {
+		$this->container = $container;
+		$this->databaseLibrary = DatabaseLibrary::getInstance();
 	}
 
-	function call($request, $response, $args) {
-		return $response->withJson(['msg'=>'text']);
+	function call($request, $response) {
+		$this->infoLog($request->getParsedBody());
+		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
+		return $response->withJson($rows);
 	}
 }

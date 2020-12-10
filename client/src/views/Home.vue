@@ -17,7 +17,7 @@ export default {
   mounted() {
     this.axios.post('/api/Sample/call', {data: 1})
     .then(response => {
-      console.log(response);
+      console.log(response.data);
     })
   }
 }

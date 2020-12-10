@@ -18,16 +18,8 @@ $app = new App();
 
 // ------------------------------------- container -------------------------------------
 $container = $app->getContainer();
-$container['pdo'] = function ($container) {
-	// 도메인과 데이터베이스 매핑 배열
-	$host = 'developer-nine.tk';
-	$dbName = 'yupitereu';
-	$userName = 'yupitereu';
-	$password = 'iarb9f87!';
 
-	return new PDO("mysql:host=$host;dbname=$dbName;charset=utf8mb4", $userName, $password, []);
-};
-$container['view'] = function () {
+$container['view'] = function() {
 	return new PhpRenderer('dist/');
 };
 $container['notFoundHandler'] = function($container) {
@@ -63,7 +55,7 @@ $app->any('/api/{controllerName}/{methodName}', function ($request, $response, $
 	if (class_exists($controllerName)) {
 		$controller = new $controllerName($container);
 		if (is_callable([$controllerName, $methodName])) {
-			return $controller->$methodName($request, $response, $args);
+			return $controller->$methodName($request, $response);
 		} else {
 			return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
 		}
