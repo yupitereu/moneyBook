@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about#abc">About</router-link> |
-      <router-link to="/about#abcd">About2</router-link>
+      <router-link to="/about#abcd">About2</router-link>|
+      <router-link to="/test">test</router-link>|
+      <router-link to="/eunji">eunji</router-link>
     </div>
     <transition name="fade">
       <router-view/>

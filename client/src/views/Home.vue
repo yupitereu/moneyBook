@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg1="Welcome to Your Vue.js App1111" msg2="GoodBye to Your Vue.js App1111"/>
   </div>
 </template>
 
@@ -15,10 +15,10 @@ export default {
     HelloWorld
   },
   mounted() {
-    this.axios.post('/api/Sample/call', {data: 1})
-    .then(response => {
-      console.log(response.data);
-    })
+    this.axios.post('/api/Sample/call2', {memberNo: 1})
+        .then(response => {
+          console.log(response.data);
+        })
   }
 }
 </script>

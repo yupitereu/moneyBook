@@ -23,4 +23,10 @@ class SampleController {
 		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
 		return $response->withJson($rows);
 	}
+
+	function call2($request, $response) {
+		$this->infoLog($request->getParsedBody());
+//		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
+		return $response->withJson([a => 1, b => 2]);
+	}
 }
