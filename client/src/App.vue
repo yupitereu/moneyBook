@@ -19,8 +19,12 @@
   text-align: center;
   color: #2c3e50;
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s ease;
+  .fade-enter-active {
+    transition: opacity .7s ease;
+  }
+
+  .fade-leave-active{
+    opacity: 0;
   }
   .fade-enter, .fade-leave {
     opacity: 0;

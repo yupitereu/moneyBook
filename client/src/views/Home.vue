@@ -2,23 +2,8 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ '0223465555'.phoneFormat() }}
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  },
-  mounted() {
-    this.axios.post('/api/Sample/call', {data: 1})
-    .then(response => {
-      console.log(response.data);
-    })
-  }
-}
-</script>
+<script src="./script/Home.js" />

@@ -3,12 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import './prototypes'
 
 Vue.config.productionTip = false
-Vue.prototype.axios = axios
-String.prototype.capitalize = function() {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-}
+Vue.prototype.$axios = axios
+
 
 new Vue({
   router,
