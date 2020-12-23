@@ -20,9 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "controllers\\": "controllers/",
+            "apiClasses\\": "apiClasses/",
             "libraries\\": "libraries/",
-            "services\\": "services/",
             "utils\\": "utils/"
         }
     }

@@ -1,9 +1,8 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    {{ '0223465555'.phoneFormat() }}
-  </div>
+	<div class="home">
+		<img alt="Vue logo" src="@/assets/logo.png">
+		<HelloWorld :msg="myData"/>
+	</div>
 </template>
 
 <script src="./script/Home.js" />

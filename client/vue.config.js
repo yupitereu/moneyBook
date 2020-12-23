@@ -1,12 +1,9 @@
-const isAllowDevTools = process.env.NODE_ENV === 'development';
-console.log(isAllowDevTools);
-
+const isDevEnv = process.env.NODE_ENV === 'development';
 module.exports = {
 	configureWebpack: {
 		devtool: 'cheap-module-source-map'
-		// devtool: 'source-map'
 	},
-	publicPath: '/dist/',
+	publicPath: '/',
 
 	devServer: {
 		proxy: {
@@ -15,5 +12,6 @@ module.exports = {
 			}
 		}
 	},
-	outputDir: '../www/dist'
+	outputDir: '../www/dist',
+	assetsDir: isDevEnv ? '' : '../dist/assets'
 }

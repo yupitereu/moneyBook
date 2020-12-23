@@ -19,10 +19,10 @@ $app = new App();
 // ------------------------------------- container -------------------------------------
 $container = $app->getContainer();
 
-$container['view'] = function() {
+$container['view'] = function () {
 	return new PhpRenderer('dist/');
 };
-$container['notFoundHandler'] = function($container) {
+$container['notFoundHandler'] = function ($container) {
 	return function ($request, $response) use ($container) {
 		return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
 	};
@@ -42,20 +42,17 @@ $middleWare = function ($request, $response, $next) {
 };
 
 // ------------------------------------- route -------------------------------------
-$app->get('/', function ($request, $response, $args) {
-	return $this->view->render($response, 'index.html');
-})->add($middleWare);
-
 // api/v2 로 요청시는 controller 의 method 에 자동 매핑
-$app->any('/api/{controllerName}/{methodName}', function ($request, $response, $args) use ($container) {
-	$controllerName = $args['controllerName'] ?? 'Sample';
-	$controllerName = 'controllers\\'. ucfirst($controllerName). 'Controller';
+$app->any('/api/{apiClassName}/{methodName}', function ($request, $response, $args) use ($container) {
+	$apiClassName = $args['apiClassName'] ?? 'Sample';
+	$apiClassName = 'apiClasses\\'. ucfirst($apiClassName);
 	$methodName = $args['methodName'] ?? 'index';
-
-	if (class_exists($controllerName)) {
-		$controller = new $controllerName($container);
-		if (is_callable([$controllerName, $methodName])) {
-			return $controller->$methodName($request, $response);
+	error_log(class_exists($apiClassName));
+	if (class_exists($apiClassName)) {
+		error_log($apiClassName);
+		$apiClass = new $apiClassName($container);
+		if (is_callable([$apiClassName, $methodName])) {
+			return $apiClass->$methodName($request, $response);
 		} else {
 			return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
 		}
@@ -63,6 +60,16 @@ $app->any('/api/{controllerName}/{methodName}', function ($request, $response, $
 		return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
 	}
 })->add($middleWare);
+
+$indexMapper = function ($request, $response, $args) {
+	return $this->view->render($response, 'index.html');
+};
+
+$app->get('/', $indexMapper)->add($middleWare);
+$app->get('/{route1}/', $indexMapper)->add($middleWare);
+$app->get('/{route1}', $indexMapper)->add($middleWare);
+$app->get('/{route1}/{route2}', $indexMapper)->add($middleWare);
+$app->get('/{route1}/{route2}/', $indexMapper)->add($middleWare);
 
 // ------------------------------------- route -------------------------------------
 
