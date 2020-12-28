@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg1 }}</h1>
+    <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -28,7 +28,6 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    <h1>{{ msg2 }}</h1>
   </div>
 </template>
 
