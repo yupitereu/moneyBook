@@ -41,10 +41,10 @@ export default {
 				case '*':
 				console.log(a * b);
 				break;
-				case ' / ':
+				case '/':
 				console.log(a / b);
 				break;
-				case ' / ':
+				case '%':
 				console.log(a % b);
 				break;
 			}
