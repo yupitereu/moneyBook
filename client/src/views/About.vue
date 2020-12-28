@@ -1,24 +1,8 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+	<div class="about">
+		<h1>This is an about page</h1>
+		<h2>hash : {{ $route.hash }}</h2>
+	</div>
 </template>
 
-<script>
-// @ is an alias to /src
-
-export default {
-  name: 'About',
-  watch: {
-    $route(to, from) {
-      console.log('to', to.hash, 'from', from.hash);
-    }
-  },
-  mounted() {
-    console.log('About Mounted', this.$route.hash);
-  },
-  beforeDestroy() {
-    console.log('About BeforeDestroy');
-  }
-}
-</script>
+<script src="./script/About.js" />

@@ -1,0 +1,66 @@
+@import "~@/common/style/default.scss";
+
+.dialogueBoxUI {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 700;
+	color: $black;
+	.overlay {
+		width: 100vw;
+		height: 100vh;
+		opacity: 0.8;
+		background-color: #000000;
+	}
+	.btn {
+		display: inline-block;
+		border-radius: 0.4vw;
+		font-size: 2rem;
+		font-weight: bold;
+		line-height: 1.29;
+		letter-spacing: -1.12px;
+		text-align: center;
+		color: #ffffff;
+		margin: 0;
+		cursor: pointer;
+	}
+	.dialogueBox {
+		position: fixed;
+		top: 30%;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 800;
+		text-align: center;
+		padding: 4vw 4.3vw 1.45vw;
+		background-color: #ffffff;
+		border-radius: 1.45vw;
+		@include flexCenter;
+		flex-direction: column;
+		.dialogueText {
+			position: relative;
+			font-size: 2rem;
+			line-height: 1.44;
+			letter-spacing: -1.4px;
+			margin-bottom: 3.3vw;
+			color: var(--black);
+			.dialogueTitle {
+				font-weight: bold;
+				font-size: 2.5rem;
+			}
+		}
+		.btnWrap {
+			.btn {
+				width: 12.9vw;
+				height: 4vw;
+				line-height: 4vw;
+				margin: 0 0.65vw;
+				&.cancelBtn {
+					background-color: $darkgray;
+				}
+				&.confirmBtn {
+					background-image: $bgGradient;
+				}
+			}
+		}
+	}
+}

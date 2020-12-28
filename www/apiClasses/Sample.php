@@ -1,12 +1,12 @@
 <?php
-namespace controllers;
+namespace apiClasses;
 
 use libraries\DatabaseLibrary;
 use Psr\Container\ContainerInterface;
 use utils\logUtil;
 use utils\singletonUtil;
 
-class SampleController {
+class Sample {
 	use logUtil;
 	use singletonUtil;
 
@@ -19,7 +19,6 @@ class SampleController {
 	}
 
 	function call($request, $response) {
-		$this->infoLog($request->getParsedBody());
 		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
 		return $response->withJson($rows);
 	}
