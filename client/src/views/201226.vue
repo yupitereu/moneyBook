@@ -9,44 +9,39 @@ export default {
   name: 'test',
 	methods: {
   	calculate: function (a, b, operator) {
-  		console.log(a, b, operator);
+  		//console.log(a, b, operator);
   		//console.log(a - b);
 			//왜 if 문만 수행을 할까?
 			// (조건) {수행구문 }
-			//let c = '+'; // 위에서 변수값을 먼저 선언을 해주고, 순차적으로 선언되어 아래로 내려감
-			if (operator == '+') { // 'c'라고 선언하면 상수가 되어짐, c라고 선언해야 변수로 인지
-				console.log(a + b);
-				console.log('if'); // 디버깅을 위한 수
-			} else if (operator == '*') {
-				console.log(a * b);
-				console.log('else if *');
-			} else if (operator == '/') {
-				console.log(a / b);
-				console.log('else if /');
-			}  else if (operator == '%') {
-				console.log(a % b);
-				console.log('else if %');
+			let c = operator; // 위에서 변수값을 먼저 선언을 해주고, 순차적으로 선언되어 아래로 내려감
+			if (c == '+') { // 'c'라고 선언하면 상수가 되어짐, c라고 선언해야 변수로 인지
+				console.log('if', a, c, b, '결과값', ':', a + b);
+			} else if (c == '*') {
+				console.log('else if', a, c, b, '결과값', ':', a * b);
+			} else if (c == '/') {
+				console.log('else if', a, c, b, '결과값', ':', a / b);
+			} else if (c == '%') {
+				console.log('else if', a, c, b, '결과값', ':', a % b);
 			} else {
-				console.log(a - b);
+				console.log('else', a, c, b, '결과값', ':', a - b);
 			}
 			//console.log(swich);
 			switch (operator) {
 				case '+':
-				console.log('switch 시작');
-				console.log(a + b);
-				break;
+					console.log('switch', a, c, b, '결과값', ':', a + b);
+					break;
 				case '-':
-				console.log(a - b);
-				break;
+					console.log('switch', a, c, b, '결과값', ':', a - b);
+					break;
 				case '*':
-				console.log(a * b);
-				break;
+					console.log('switch', a, c, b, '결과값', ':', a * b);
+					break;
 				case '/':
-				console.log(a / b);
-				break;
+					console.log('switch', a, c, b, '결과값', ':', a / b);
+					break;
 				case '%':
-				console.log(a % b);
-				break;
+					console.log('switch', a, c, b, '결과값', ':', a % b);
+					break;
 			}
 		},
 		//메소드가 끝났으니 , 찍기!
