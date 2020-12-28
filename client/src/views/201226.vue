@@ -31,19 +31,20 @@ export default {
 			}
 			//console.log(swich);
 			switch (operator) {
-				case '+';
+				case '+':
+				console.log('switch 시작');
 				console.log(a + b);
 				break;
-				case '-';
+				case '-':
 				console.log(a - b);
 				break;
-				case '*';
+				case '*':
 				console.log(a * b);
 				break;
-				case ' / ';
+				case ' / ':
 				console.log(a / b);
 				break;
-				case ' / ';
+				case ' / ':
 				console.log(a % b);
 				break;
 			}
