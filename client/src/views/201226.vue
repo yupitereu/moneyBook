@@ -49,6 +49,12 @@ export default {
   		// 1. if문 사용하기 / num이 짝수인지, 홀 수 인지 찾아보는방법으로.
 			// 사칙연산 및 나머지연산 중 한가지를 사용하면된다고함
 			// 짝수의 정의란? > 답을 생각해보기
+			//let z == 0;
+			if (0 === num % 2) {
+				console.log('짝수')
+			} else {
+				console.log('홀수')
+			}
 		}
 	},
   mounted() {
