@@ -1,15 +1,12 @@
 <template>
-  <div class="home">
+  <div class="test">
     <img alt="Vue logo" src="../assets/logo.png">
-
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
-  name: 'Home',
+  name: 'test',
 	methods: {
   	calculate: function (a, b, operator) {
   		console.log(a, b, operator);
@@ -32,7 +29,26 @@ export default {
 			} else {
 				console.log(a - b);
 			}
-		}, //메소드가 끝났으니 , 찍기!
+			//console.log(swich);
+			switch (operator) {
+				case '+';
+				console.log(a + b);
+				break;
+				case '-';
+				console.log(a - b);
+				break;
+				case '*';
+				console.log(a * b);
+				break;
+				case ' / ';
+				console.log(a / b);
+				break;
+				case ' / ';
+				console.log(a % b);
+				break;
+			}
+		},
+		//메소드가 끝났으니 , 찍기!
 		checkOdd: function (num) {
   		// 1. if문 사용하기 / num이 짝수인지, 홀 수 인지 찾아보는방법으로.
 			// 사칙연산 및 나머지연산 중 한가지를 사용하면된다고함
