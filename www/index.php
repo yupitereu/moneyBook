@@ -54,10 +54,10 @@ $app->any('/api/{apiClassName}/{methodName}', function ($request, $response, $ar
 		if (is_callable([$apiClassName, $methodName])) {
 			return $apiClass->$methodName($request, $response);
 		} else {
-			return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
+			return $response->withJson(['status' => 404, 'msg' => 'page not found'], 404);
 		}
 	} else {
-		return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
+		return $response->withJson(['status' => 404, 'msg' => 'page not found'], 404);
 	}
 })->add($middleWare);
 
