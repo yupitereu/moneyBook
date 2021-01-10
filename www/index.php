@@ -47,9 +47,8 @@ $app->any('/api/{apiClassName}/{methodName}', function ($request, $response, $ar
 	$apiClassName = $args['apiClassName'] ?? 'Sample';
 	$apiClassName = 'apiClasses\\'. ucfirst($apiClassName);
 	$methodName = $args['methodName'] ?? 'index';
-	error_log(class_exists($apiClassName));
+
 	if (class_exists($apiClassName)) {
-		error_log($apiClassName);
 		$apiClass = new $apiClassName($container);
 		if (is_callable([$apiClassName, $methodName])) {
 			return $apiClass->$methodName($request, $response);
