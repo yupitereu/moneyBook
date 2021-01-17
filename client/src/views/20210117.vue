@@ -57,9 +57,9 @@ export default {
 		},
 		work2 : function () {
 			// 반복문은 2번만 사용한다. for문안에 for이 들어갈 수 있음
-			for(let i=1; i<10; i++) {
-				for(let i=1; i<10; i++) {
-
+			for(let a=2; a<10; a++) {  //a가 2부터 9까지 증가를 해야되고
+				for(let i=1; i<10; i++) { // *1부터 9까지 곱할 수 있어야되고
+					console.log(a, '단', a, '*', i, '=', a * i ); // a에 i를 곱해주는 방식으로 진행
 				}
 			}
 		}
