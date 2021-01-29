@@ -8,15 +8,18 @@
 		<transition name="fade">
 			<router-view/>
 		</transition>
+		<AlarmToast/>
 		<DialogueBoxUI/>
 	</div>
 </template>
 
 <script>
 import DialogueBoxUI from "@/components/DialogueBoxUI";
+import AlarmToast from "@/components/AlarmToast";
 export default {
 	components: {
-		DialogueBoxUI
+		DialogueBoxUI,
+		AlarmToast
 	}
 }
 </script>

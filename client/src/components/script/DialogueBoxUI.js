@@ -6,7 +6,7 @@ export default {
 		}
 	},
 	methods: {
-		clickDialogueButton (buttonType, index) {
+		clickDialogueButton(buttonType, index) {
 			this.dialogueData[index].isShow = false;
 			if (buttonType === 'confirm' && typeof this.dialogueData[index].confirmCallback === 'function') {
 				this.dialogueData[index].confirmCallback();

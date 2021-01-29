@@ -1,3 +1,7 @@
+/**
+ * HellowWorld Component
+ * @property {Function} changeMyData
+ */
 export default {
 	name: 'HelloWorld',
 	props: {
