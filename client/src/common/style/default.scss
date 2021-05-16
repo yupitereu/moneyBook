@@ -1,17 +1,3 @@
-$mainColor: #ffb18e;
-$subColor: #ff8c8c;
-$red: #ff0000;
-$gray: #989898;
-$white: #ffffff;
-$black: #333333;
-$lightgray: #ebebeb;
-$darkgray: #585454;
-$bgGray: #f2f2f2;
-$bgRed: #FBE3E3;
-$bgGradient: linear-gradient(to right, $mainColor, $subColor);
-$color-smallBtn: linear-gradient(115deg, #ffceb8 3%, #ffb18e 21%, #ffb18e 81%, #ff8c8c);
-$color-smallBtn-active: linear-gradient(122deg, #ffceb8, #ffb18e);
-
 * {
 	margin: 0;
 	padding: 0;
@@ -20,25 +6,6 @@ $color-smallBtn-active: linear-gradient(122deg, #ffceb8, #ffb18e);
 ul {
 	list-style-type: none;
 	padding: 0;
-}
-a {
-	color: #42b983;
-}
-button {
-	cursor: pointer;
-}
-
-.btn{
-	cursor: pointer;
-}
-.btn.disabled,
-button.disabled {
-	background-color: #c6c6c6 !important;
-	background-image: none !important;
-	color: $white !important;
-	border: none !important;
-	font-weight: normal !important;
-	cursor: no-drop !important;
 }
 
 //font
@@ -49,134 +16,18 @@ button.disabled {
 	font-weight: normal;
 }
 
-//mixin
-@mixin flexCenter {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-@mixin btnStyle($btnW, $btnH, $bgC, $bgImg:true) {
-	width: $btnW;
-	height: $btnH;
-	line-height: $btnH;
-	font-weight: bold;
-	border: 3px solid $bgC;
-	background-image: $bgImg;
-	outline: none;
-	@if $bgImg {
-		background-image: $bgGradient;
-		color: $white;
-		border: none;
-	} @else {
-		background-image: none;
-		background-color: $bgC;
-		border: 3px solid $bgC;
+#app {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+
+	.fade-enter-active {
+		transition: opacity .7s ease;
 	}
-}
-@mixin checkBox($w) {
-	input[type="checkbox"] {
-		position: absolute;
-		width: $w;
-		height: $w;
-		top: 0;
-		left: 25%;
+
+	.fade-enter, .fade-leave, .fade-leave-active {
 		opacity: 0;
-		&:checked ~ .chkMark {
-			background-color: $red;
-			border-color: $red;
-		}
-		&:checked ~ .chkMark::after {
-			display: block;
-		}
-	}
-	.chkMark {
-		width: $w;
-		height: $w;
-		display: block;
-		border-radius: 9px;
-		border: solid 3px $gray;
-		background-color: $white;
-		position: relative;
-		cursor: pointer;
-		&::after {
-			content: "";
-			background: $chkMarkIcon no-repeat center;
-			background-size: contain;
-			position: absolute;
-			width: $w + 10px;
-			height: $w - 5px;
-			left: 0;
-			bottom: 9%;
-			display: none;
-		}
-	}
-}
-@mixin radioInp($w, $color, $check) {
-	.radioMark {
-		width: $w;
-		height: $w;
-		background: $color;
-		border: 4px solid $color;
-		border-radius: 100%;
-		transition: all 0.3s ease;
-		box-shadow: inset 0 0 0 $w white;
-		display: inline-block;
-		vertical-align: sub;
-		position: relative;
-	}
-	input[type="radio"] {
-		display: none;
-		&:checked + .radioMark {
-			border-color: $check;
-		}
-		&:checked + .radioMark::before {
-			content: "";
-			width: 60%;
-			height: 60%;
-			display: block;
-			position: absolute;
-			border-radius: 50%;
-			background-color: $check;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
-	@media screen and (max-width: 1280px) {
-		.radioMark {
-			width: $w * 0.8;
-			height: $w * 0.8;
-			border-width: 3px;
-		}
-	}
-	@media screen and (max-width: 1024px) {
-		.radioMark {
-			width: $w * 0.7;
-			height: $w * 0.7;
-		}
-		input[type="radio"] {
-			&:checked + .radioMark::before {
-				width: 55%;
-				height: 55%;
-			}
-		}
-	}
-}
-@mixin selectBox($w, $h) {
-	width: $w;
-	height: $h;
-	line-height: $h;
-	padding-left: 15px;
-	border: solid 1px $gray;
-	background: $arrowIcon no-repeat center right #ffffff;
-	appearance: none;
-	-webkit-appearance: none;
-	color: $black;
-	&::-webkit-outer-spin-button,
-	&::-webkit-inner-spin-button,
-	&::-webkit-calendar-picker-indicator,
-	&::-webkit-search-cancel-button {
-		opacity: 0;
-		-webkit-appearance: none;
 	}
 }

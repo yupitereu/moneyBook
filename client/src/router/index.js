@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
-// import About from '@/views/About.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/About',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+    name: 'defaultLayout',
+    component: () => import(/* webpackChunkName: "defaultLayout" */ '@/common/defaultLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: () => import(/* webpackChunkName: "about" */ '@/views/Home.vue')
+      }
+    ]
   }
 ]
 
@@ -23,5 +23,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+const originRouterPushFunction = VueRouter.prototype.push;
+VueRouter.prototype.push = async function (location) {
+  try {
+    return await originRouterPushFunction.call(this, location);
+  } catch (error) {
+    if (error.name !== 'NavigationDuplicated') throw error;
+  }
+};
 
 export default router

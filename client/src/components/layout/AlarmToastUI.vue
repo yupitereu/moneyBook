@@ -1,5 +1,5 @@
 <template>
-	<div ref="alarmToastUI" class="alarmToastUI" v-if="isShow">
+	<div ref="alarmToastUI" class="alarmToastUI" v-show="isShow">
 		<transition-group name="bounce">
 			<div class="alarmToastBox bounce-item" :style="{height: `${alarmToastDatum.height}px`}" :key="alarmToastDatum.key" v-for="alarmToastDatum in alarmToastData" v-if="alarmToastDatum.isShow" @click="clickToast(alarmToastDatum)" @mouseout="restartRemoveTimer(alarmToastDatum);" @mouseover="pauseRemoveTimer(alarmToastDatum);">
 				<div class="messageBox">
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-	name: "AlarmToast",
+	name: "AlarmToastUI",
 	data() {
 		return {
 			alarmToastData: [], // 화면에 출력할 토스트 데이터
@@ -38,12 +38,13 @@ export default {
 		 * @options timeOut 토스트메시지 전체 높이
 		 * @options isClearAllToastAtClick 토스트 클릭 시 모든 알람 토스트 닫기 여부
 		 */
-		this.$root.$on('alarmToast', (toastData) => {
+		this.$root.$on('showAlarmToast', (toastData) => {
 			if(typeof toastData !== 'object') return console.error('alarmToast options is not object');
 			const nowTime = this.$moment();
 			this.isShow = true;
 			toastData.isShow = true;
 			toastData.isProgressTimer = true;
+			toastData.isUseTimer = typeof toastData.isUseTimer !== 'undefined' ? toastData.isUseTiemr : true;
 			toastData.noticeTime = nowTime.format('HH:mm');
 
 			toastData.key = toastData.key || nowTime.toDate().getTime();
@@ -130,7 +131,7 @@ export default {
 				this.removeTimer = setInterval(() => {
 					this.alarmToastData.forEach((datum, index) => {
 						if (datum.isShow) {
-							if (datum.isProgressTimer) { // 타이머가 실행중인 경우
+							if (datum.isProgressTimer && datum.isUseTimer) { // 타이머가 실행중인 경우
 								datum.remaining -= this.removeTimerInterval; // 남은 시간 차감
 								datum.remainingRatio = `${datum.remaining / datum.timeOut * 100}%`; // 남은 시간에 대한 프로그레스바 길이 조정
 

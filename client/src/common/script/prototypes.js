@@ -48,7 +48,7 @@ Array.prototype.moveElement = function (fromIndex, toIndex) {
 		toIndex += this.length;
 	}
 	if (toIndex >= this.length) {
-		var k = toIndex - this.length + 1;
+		let k = toIndex - this.length + 1;
 		while (k--) {
 			this.push(undefined);
 		}
