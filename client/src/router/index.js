@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'defaultLayout',
+    // name: 'defaultLayout',
     component: () => import(/* webpackChunkName: "defaultLayout" */ '@/common/defaultLayout.vue'),
     children: [
       {

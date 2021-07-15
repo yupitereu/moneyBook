@@ -1,4 +1,4 @@
-Number.prototype.commaFormat = function () {
+Number.prototype.numberFormat = function () {
 	if (this === 0) return 0;
 
 	const reg = /(^[+-]?\d+)(\d{3})/;
@@ -12,13 +12,13 @@ Number.prototype.commaFormat = function () {
 };
 
 // 문자열 타입에서 쓸 수 있도록 commaFormat() 함수 추가
-String.prototype.commaFormat = function () {
+String.prototype.numberFormat = function () {
 	const num = parseFloat(this);
 	if (isNaN(num)) {
 		return 'isNaN';
 	}
 
-	return num.commaFormat();
+	return num.numberFormat();
 };
 
 String.prototype.phoneFormat = function () {

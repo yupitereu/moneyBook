@@ -8,7 +8,7 @@ module.exports = {
 	devServer: {
 		proxy: {
 			'^/api/*': {
-				target: `http://developer-nine.tk`
+				target: `http://yupitereu.cafe24.com`
 			}
 		}
 	},
