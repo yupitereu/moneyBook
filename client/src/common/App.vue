@@ -9,8 +9,9 @@
 </template>
 
 <script>
-import DialogueBoxUI from "@/components/layout/DialogueBoxUI";
-import AlarmToastUI from "@/components/layout/AlarmToastUI";
+import DialogueBoxUI from "@/components/layout/DialogueBoxUI.vue";
+import AlarmToastUI from "@/components/layout/AlarmToastUI.vue";
+
 export default {
 	components: {
 		DialogueBoxUI,
@@ -47,6 +48,11 @@ export default {
 		popDialogueData() {
 			this.dialogueData.pop();
 		}
+	},
+	created () {
+		this.$root.$on('showDialogue', (data, buttonAction) => {
+			this.showDialogue(data).then(buttonAction);
+		});
 	}
 }
 </script>

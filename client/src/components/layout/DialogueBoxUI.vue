@@ -19,5 +19,5 @@
 	</div>
 </template>
 
-<script src="./script/DialogueBoxUI.js"/>
-<style src="./style/DialogueBoxUI.scss" lang="scss" scoped />
+<script src="./DialogueBoxUI.js" />
+<style src="./DialogueBoxUI.scss" lang="scss" scoped />

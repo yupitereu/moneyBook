@@ -18,5 +18,5 @@
 	</header>
 </template>
 
-<script src="./script/HeaderUI.js"/>
-<style src="./style/HeaderUI.scss" lang="scss" scoped />
+<script src="./HeaderUI.js"/>
+<style src="./HeaderUI.scss" lang="scss" scoped />
