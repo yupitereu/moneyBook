@@ -10,7 +10,7 @@ class Sample {
 	use logUtil;
 	use singletonUtil;
 
-	protected $container, $view, $pdo;
+	protected $container, $view;
 	private $databaseLibrary;
 
 	public function __construct(ContainerInterface $container) {
@@ -20,6 +20,10 @@ class Sample {
 
 	function call($request, $response) {
 		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
+		// success case
 		return $response->withJson($rows);
+
+		// error case
+		// return $response->withStatus(500, 'error test')->withJson($rows);
 	}
 }

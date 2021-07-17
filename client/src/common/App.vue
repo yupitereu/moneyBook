@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" @click="$root.$emit('GlobalClick', $event)">
 		<transition name="fade">
 			<router-view/>
 		</transition>

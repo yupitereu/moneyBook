@@ -27,11 +27,15 @@ $container['notFoundHandler'] = function ($container) {
 		return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
 	};
 };
-$container['errorHandler'] = function ($container) {
-	return function ($request, $response, $exception) use ($container) {
-		return $response->withJson(['status'=>500, 'msg'=>'unknown error'], 500);
-	};
-};
+//$container['errorHandler'] = function ($container) {
+//	return function ($request, $response, $exception) use ($container) {
+//		return $response->withJson(['status'=>500, 'msg'=>'unknown error'], 500);
+//	};
+//};
+//
+//$container['phpErrorHandler'] = function ($container) {
+//	return $container['errorHandler'];
+//};
 
 // ------------------------------------- middleWare -------------------------------------
 $middleWare = function ($request, $response, $next) {
