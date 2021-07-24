@@ -1,3 +1,50 @@
+
+/**
+common
+ */
+.flex {
+	@include flexCenter;
+}
+.hidden {
+	text-align:center;
+	font-size:0;
+}
+
+/**
+style
+ */
+.btn {
+	display:inline-block;
+	width:auto;
+	background-color:#333;
+	&-lg {
+		height:52px;
+		border-radius: 26px;
+	}
+	&-xl {
+		width:60px;
+		height:60px;
+		border-radius: 30px;
+	}
+	&-ra {
+		border-radius: 50%;
+	}
+	&-block {
+		display:block;
+		width:100%;
+	}
+}
+
+
+
+
+
+
+
+/**
+back up
+ */
+
 * {
 	margin: 0;
 	padding: 0;
