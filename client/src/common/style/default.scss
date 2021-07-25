@@ -16,15 +16,15 @@ style
 .btn {
 	display:inline-block;
 	width:auto;
-	background-color:#333;
+	background-color:$bg-gray;
 	&-lg {
-		height:52px;
-		border-radius: 26px;
+		height:5.2rem;
+		border-radius: 2.6rem;
 	}
 	&-xl {
-		width:60px;
-		height:60px;
-		border-radius: 30px;
+		width:6rem;
+		height:6rem;
+		border-radius: 3rem;
 	}
 	&-ra {
 		border-radius: 50%;
@@ -34,9 +34,15 @@ style
 		width:100%;
 	}
 }
-
-
-
+/**
+layout
+ */
+//body {
+//	font-size:100%;
+//}
+//#app {
+//	font-size:1rem;
+//}
 
 
 
