@@ -7,36 +7,36 @@
         <div class="btn">button</div>
       </div>
       <div class="box-cont">
-        <div class="btn-xl">button</div>
-        <div class="btn-lg">button</div>
-        <div class="btn-sm">button</div>
-        <div class="btn-xs">button</div>
+        <div class="btn btn-xl">button</div>
+        <div class="btn btn-lg">button</div>
+        <div class="btn btn-sm">button</div>
+        <div class="btn btn-xs">button</div>
       </div>
       <div class="box-cont">
-        <div class="btn-primary">button</div>
-        <div class="btn-secondary">button</div>
-        <div class="btn-disabled">button</div>
-      </div>
-
-      <div class="box-cont">
-        <div class="btn-line">button</div>
-        <div class="btn-line btn-primary">button</div>
-        <div class="btn-line btn-secondary">button</div>
-        <div class="btn-line btn-disabled">button</div>
+        <div class="btn btn-primary">button</div>
+        <div class="btn btn-secondary">button</div>
+        <div class="btn btn-disabled">button</div>
       </div>
 
       <div class="box-cont">
-        <div class="btn-ra">button</div>
-        <div class="btn-block">button</div>
-        <div class="btn-square">button</div>
-        <div class="btn-transparent">button</div>
+        <div class="btn btn-line">button</div>
+        <div class="btn btn-line btn-primary">button</div>
+        <div class="btn btn-line btn-secondary">button</div>
+        <div class="btn btn-line btn-disabled">button</div>
       </div>
 
       <div class="box-cont">
-        <div class="btn-line btn-ra">button</div>
-        <div class="btn-line btn-block">button</div>
-        <div class="btn-line btn-square">button</div>
-        <div class="btn-line btn-transparent">button</div>
+        <div class="btn btn-ra">button</div>
+        <div class="btn btn-block">button</div>
+        <div class="btn btn-square">button</div>
+        <div class="btn btn-transparent">button</div>
+      </div>
+
+      <div class="box-cont">
+        <div class="btn btn-line btn-ra">button</div>
+        <div class="btn btn-line btn-block">button</div>
+        <div class="btn btn-line btn-square">button</div>
+        <div class="btn btn-line btn-transparent">button</div>
       </div>
     </div>
     <!-- //box -->
