@@ -99,6 +99,11 @@ export default {
 #sns-area p:after {
   margin-left:6px;
 }
+#sns-area .btn-area {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 #sns-area .btn-area > div{
   margin:0 3px;
 }

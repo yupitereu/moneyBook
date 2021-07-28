@@ -8,3 +8,14 @@
 	content:"";
 	clear:both;
 }
+@mixin wh($width,$height) {
+	width:$width;
+	height:$height;
+}
+@mixin bd($size,$style,$color) {
+	border:$size $style $color;
+	box-sizing:border-box;
+}
+@mixin effect {
+	transition:all 0.5 ease-in-out;
+}

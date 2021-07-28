@@ -13,36 +13,180 @@ common
 /**
 style
  */
+/* button */
 .btn {
-	display:inline-block;
+	display:flex;
 	width:auto;
 	background-color:$bg-gray;
+	align-items:center;
+	justify-content: center;
+	text-align:center;
+	height:4.4rem;
+	border-radius: 2.2rem;
+	@include bd(1px,solid,transparent);
+	@include effect;
+	&:focus,
+	&:active  {
+		background:rgba(17,17,17,0.3);
+		color:$white;
+	}
+	/* btn 크기 */
+	&-xl {
+		height:6rem;
+		border-radius: 3rem;
+	}
 	&-lg {
 		height:5.2rem;
 		border-radius: 2.6rem;
 	}
-	&-xl {
-		width:6rem;
-		height:6rem;
-		border-radius: 3rem;
+	&-sm {
+		height:4rem;
+		border-radius: 2rem;
 	}
+	&-xs {
+		height:2.8rem;
+		border-radius: 1.4rem;
+	}
+	/* 색상 */
+	&-primary {
+		background-color:$primary;
+		color:$white;
+	}
+	&-secondary {
+		background-color:$secondary;
+	}
+	&-disabled {
+		background-color:$bg-gray;
+		color:$light-gray;
+	}
+	/* line style */
+	&-line {
+		border-color:$dark;
+		background-color:$white;
+		color:$dark;
+		&-primary {
+			background-color:$white;
+			border-color:$primary;
+			color:$primary;
+		}
+		&-secondary {
+			background-color:$white;
+			border-color:$secondary;
+			color:$secondary;
+		}
+		&-disabled {
+			background-color:$bg-gray;
+			border-color:$box-outline;
+			color:$light-gray;
+		}
+	}
+
+	/* btn 형태 */
 	&-ra {
 		border-radius: 50%;
 	}
 	&-block {
-		display:block;
 		width:100%;
 	}
+	&-square {
+		border-radius: .4rem;
+	}
+	&-transparent {
+		background-color:transparent !important;
+	}
 }
+/* border */
+.bd {
+	@include bd(1px, solid, $box-outline);
+	&-top {
+		border-top:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-bottom {
+		border-bottom:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-left {
+		border-left:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-right {
+		border-left:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+}
+/* color */
+.primary {
+	color:$primary;
+}
+.dark-primary {
+	color:$primary-dark;
+}
+.secondary {
+	color:$secondary;
+}
+.third {
+	color:$third;
+}
+.danger {
+	color:$danger;
+}
+.white {
+	color:$white;
+}
+.black {
+	color:$black;
+}
+.medium-gray {
+	color:$medium-gray;
+}
+.gray {
+	color:$gray;
+}
+.light-gray {
+	color:$light-gray;
+}
+.point1 {
+	color:$point1;
+}
+
+.bg {
+	&-primary {
+		background-color:$primary;
+		color:$white;
+		&-dark {
+			backgorund-color:$primary-dark;
+		}
+	}
+	&-secondary {
+		background-color:$secondary;
+		color:$white;
+	}
+	&-dark {
+		background-color:$dark;
+		color:$white;
+	}
+	&-gray {
+		background-color:$bg-gray;
+	}
+}
+
+/**
+* input
+ */
+input {
+
+}
+
 /**
 layout
  */
-//body {
-//	font-size:100%;
-//}
-//#app {
-//	font-size:1rem;
-//}
+html {
+	font-size:10px;
+}
+body {
+	font-size:1.4rem;
+}
 
 
 
