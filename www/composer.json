@@ -9,7 +9,8 @@
     ],
     "require": {
         "slim/slim": "3.*",
-        "slim/php-view": "^2.2"
+        "slim/php-view": "^2.2",
+        "firebase/php-jwt": "^5.4"
     },
     "scripts": {
         "serve": "php -S localhost:8888"

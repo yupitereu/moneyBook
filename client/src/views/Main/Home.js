@@ -12,7 +12,7 @@ export default {
 	created() {
 		const data = new FormData();
 		data.append('aaa', '111');
-		this.$axios.post('/api/Sample/call', data, {
+		this.$axios.post('/Sample/call', data, {
 			headers: {
 				"Content-Type": "multipart/form-data"
 			}

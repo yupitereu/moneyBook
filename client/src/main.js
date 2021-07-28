@@ -10,12 +10,13 @@ import '@/common/script/prototypes'
 
 moment.locale('ko');
 const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
+let source = CancelToken.source();
 
 Vue.config.productionTip = false;
 Vue.prototype.$moment = moment;
 Vue.prototype.$cookie = cookie;
 Vue.prototype.$axios = axios;
+Kakao.init('27341437aa1a4aa4a8c0a8dea1c71e41');
 
 const rootVue = new Vue({
   router,
@@ -23,9 +24,10 @@ const rootVue = new Vue({
   render: h => h(App)
 }).$mount('#app');
 
+axios.defaults.baseURL = '/api';
 axios.interceptors.request.use(config => {
-      config.cancelToken= source.token;
-      config.headers.Authorization = (cookie.get('accessToken') && `Bearer ${cookie.get('accessToken')}`) || (localStorage.getItem('accessToken') && `Bearer ${localStorage.getItem('accessToken')}`) || "";
+      config.cancelToken = source.token;
+      config.headers.Authorization = cookie.get('accessToken') && `Bearer ${cookie.get('accessToken')}` || "";
       config.headers['refresh-token'] = (cookie.get('refreshToken') && `${cookie.get('refreshToken')}`) || (localStorage.getItem('refreshToken') && `${localStorage.getItem('refreshToken')}`) || "";
       return config;
     },
@@ -35,13 +37,15 @@ axios.interceptors.request.use(config => {
 );
 
 axios.interceptors.response.use(response => {
-      let localStorageToken = localStorage.getItem('accessToken');
-      if (localStorageToken) {
-        const accessToken = cookie.get('accessToken');
-        if (accessToken && accessToken !== localStorageToken) {
-          localStorage.setItem('accessToken', accessToken);
-          cookie.set('accessToken');
+      if (response.headers.authorization) {
+        const accessToken = response.headers.authorization.replace('Bearer ', '');
+        if (accessToken) {
+          cookie.set('accessToken', accessToken);
         }
+      } else {
+        cookie.set('accessToken');
+        cookie.set('refreshToken');
+        localStorage.removeItem('refreshToken');
       }
 
       return response;
@@ -49,7 +53,7 @@ axios.interceptors.response.use(response => {
     error => {
       if (error.response && error.response.status === 401 && error.response.statusText === 'Not member') {
         source.cancel('User cancel request'); // 진행중인 다른 HTTP 요청 모두 취소
-
+        source = CancelToken.source();
         rootVue.$emit('showDialogue', {message: '로그인하지 않은 유저입니다.'}, () => {
           router.push('/member/login');
         });

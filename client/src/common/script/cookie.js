@@ -6,7 +6,7 @@ const get = (name) => {
 }
 
 const set = (name, value, options) => {
-	options = options || initOptions;
+	options = options || Object.assign({}, initOptions);
 	if (!name) return false;
 	if (typeof value === 'undefined' || value === null) {
 		options.expires = -1;

@@ -7,8 +7,8 @@
         나의 자산을 관리하세요
       </p>
       <div id="sns-area">
-        <div class="btn btn-lg btn-block btn-kakao"><span class="ico"></span>카카오톡으로 이용하기</div>
-        <div class="btn btn-lg btn-block btn-apple"><span class="ico"></span>Apple로 이용하기</div>
+        <div class="btn btn-lg btn-block btn-kakao" @click="kakaoLoginRequest"><span class="ico"></span>카카오톡으로 이용하기</div>
+        <div v-if="false" class="btn btn-lg btn-block btn-apple"><span class="ico"></span>Apple로 이용하기</div>
         <p class="txt flex">또는</p>
         <div class="btn-area">
             <div class="btn btn-xl btn-naver"><span class="ico"></span><span class="hidden">Naver로 이용하기</span></div>
@@ -25,18 +25,7 @@
 
 </template>
 
-<script>
-export default {
-	name: "Login",
-	created () {
-		// 클라이언트에 저장 중인 토큰 정보 삭제
-		this.$cookie.set('accessToken');
-		this.$cookie.set('refreshToken');
-		localStorage.removeItem('refreshToken');
-		localStorage.removeItem('refreshToken');
-	}
-}
-</script>
+<script src="./Login.js" />
 
 <style scoped>
 #login {
