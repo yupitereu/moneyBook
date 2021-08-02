@@ -1,6 +1,9 @@
 <?php
 namespace apiClasses;
 
+use Firebase\JWT\BeforeValidException;
+use Firebase\JWT\ExpiredException;
+use Firebase\JWT\SignatureInvalidException;
 use libraries\DatabaseLibrary;
 use Psr\Container\ContainerInterface;
 use Firebase\JWT\JWT;
@@ -42,23 +45,20 @@ class Member
 		$headers = apache_request_headers();
 		$accessToken = trim(str_replace('Bearer ', '', $headers['authorization']));
 		$refreshToken = $headers['refresh-token'];
-
 		if ($accessToken && $refreshToken) {
 			try {
 				$accessTokenData = JWT::decode($accessToken, $this->secretKey1, ['HS512']);
+				$_SESSION['memberNo'] = $accessTokenData->memberNo;
+			} catch (ExpiredException $e) {
 				$refreshTokenData = JWT::decode($refreshToken, $this->secretKey2, ['HS512']);
-			} catch (\Exception $e) {
-				$this->errorLog($e);
-				return false;
-			}
-
-			if ($accessTokenData->memberNo !== $refreshTokenData->memberNo || $accessTokenData->iss !== $refreshTokenData->iss) {
-				return false;
-			} else if ($accessTokenData->exp <= time()) {
 				$accessToken = $this->createJwtToken('accessToken', $refreshTokenData->memberNo);
+				$_SESSION['memberNo'] = $refreshTokenData->memberNo;
+			} catch (BeforeValidException $e) {
+				return false;
+			} catch (SignatureInvalidException $e) {
+				return false;
 			}
 
-			$_SESSION['memberNo'] = $refreshTokenData->memberNo;
 			$_SESSION['accessToken'] = $accessToken;
 			$_SESSION['refreshToken'] = $refreshToken;
 			return true;
@@ -66,7 +66,7 @@ class Member
 			try {
 				$refreshTokenData = JWT::decode($refreshToken, $this->secretKey2, ['HS512']);
 			} catch (\Exception $e) {
-				$this->errorLog($e);
+				$this->infoLog("invalid refresh Token");
 				return false;
 			}
 

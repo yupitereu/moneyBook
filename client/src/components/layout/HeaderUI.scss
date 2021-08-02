@@ -9,6 +9,7 @@ header {
 	align-items: center;
 	.left-button {
 		width: 50px;
+		z-index: 10;
 	}
 	.month-selection {
 		display: flex;
@@ -23,8 +24,51 @@ header {
 			appearance: none;
 			font-size: 15px;
 		}
+		.month-operator {
+			z-index: 10;
+		}
 	}
 	.right-button {
 		width: 50px;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 10;
+		.hamburger {
+			padding: 5px;
+		}
+	}
+
+	input[type="month"]:focus {
+		outline: none;
+	}
+	input[type="month"] {
+		border: none;
+		background: transparent;
+		text-align: center;
+		text-align: -webkit-center;
+		padding: 0;
+		box-sizing: border-box;
+		-webkit-appearance: none;
+		color: $white;
+		z-index: 1;
+	}
+
+	input[type="month"]::-webkit-calendar-picker-indicator {
+		background: transparent;
+		bottom: 0;
+		color: transparent;
+		cursor: pointer;
+		height: auto;
+		left: -20px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+		width: auto;
+	}
+	input::-webkit-date-and-time-value {
+		margin-right: 0;
 	}
 }

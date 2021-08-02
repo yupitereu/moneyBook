@@ -8,7 +8,6 @@ import cookie from '@/common/script/cookie'
 import 'moment/locale/ko'
 import '@/common/script/prototypes'
 
-moment.locale('ko');
 const CancelToken = axios.CancelToken;
 let source = CancelToken.source();
 axios.defaults.baseURL = '/api';

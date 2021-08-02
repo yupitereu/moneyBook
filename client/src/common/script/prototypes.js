@@ -27,6 +27,10 @@ String.prototype.phoneFormat = function () {
 	return this.replace(reg, "$1-$2-$3");
 };
 
+Number.prototype.lpad = function (padString, length) {
+	return String(this).lpad(padString, length);
+}
+
 // 문자열에 padString을 왼쪽에 붙여서 지정한 길이로 만드는 함수
 String.prototype.lpad = function (padString, length) {
 	let s = this, i = s.length;
