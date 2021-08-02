@@ -112,13 +112,34 @@ class Member
 	 */
 	public function login($memberNo)
 	{
+		$_SESSION['memberNo'] = $memberNo;
 		$this->createJwtToken('accessToken', $memberNo);
 		$this->createJwtToken('refreshToken', $memberNo);
 	}
 
+	public function getMemberInfo($request, $response)
+	{
+		$rows = $this->databaseLibrary->executeQuery("select memberNo, memberName, activeState from member where memberNo = :memberNo and activeState < 3", [':memberNo' => $_SESSION['memberNo']]);
+		if (count($rows) === 1) {
+			return $response->withAddedHeader('authorization', 'Bearer ' . $_SESSION['accessToken'])->withJson(['isMember' => true, 'userInfo' => $rows[0]]);
+		} else {
+			$response->withJson(['isMember' => false]);
+		}
+	}
+
 	public function joinMember($request, $response)
 	{
-		$joinSql = "insert into member (memberName, phoneNumber, socialType, socialId, memberPassword) values (:memberName, :phoneNumber, :socialType, :socialId, sha2('fjkwlejf1?', 512))";
+		$param = $request->getParsedBody();
+		$joinSql = "insert into member (memberName, socialType, socialId, memberPassword) values (:memberName, :socialType, :socialId, sha2('fjkwlejf1?', 512))";
+		$memberNo = $this->databaseLibrary->executeQuery($joinSql, [':memberName'=>$param['kakaoAccount']['properties']['nickname'], ':socialType'=>$param['socialType'], ':socialId'=>$param['kakaoAccount']['id']], DatabaseLibrary::$LASTINSERTID | DatabaseLibrary::$NORESULT | DatabaseLibrary::$DEBUG);
+		$this->login($memberNo);
+
+		$rows = $this->databaseLibrary->executeQuery("select memberNo, memberName, activeState from member where socialType = :socialType and activeState < 3 and socialId = :kakaoId", [':socialType' => $param['socialType'], ':kakaoId' => $param['kakaoAccount']['id']]);
+		if (count($rows) === 1) {
+			return $response->withAddedHeader('authorization', 'Bearer ' . $_SESSION['accessToken'])->withJson(['isMember' => true, 'refreshToken' => $_SESSION['refreshToken'], 'userInfo' => $rows[0]]);
+		} else {
+			return $response->withJson(['isMember' => false]);
+		}
 	}
 
 	public function kakaoAuthComplete($request, $response)
@@ -128,18 +149,19 @@ class Member
 		$tokenResponse = $this->postMessageSend('https://kauth.kakao.com/oauth/token', ['content-type' => 'application/x-www-form-urlencoded;charset=utf-8'],
 				['grant_type' => 'authorization_code', 'client_id' => '35bbe933edfb3c69b4b9d011b7a0b969', 'redirect_uri' => $param['redirectUri'], 'code' => $param['code']]);
 		$tokenResponse = json_decode($tokenResponse) ?? [];
-$this->infoLog($tokenResponse);
 		$accountResponse = $this->postMessageSend('https://kapi.kakao.com/v2/user/me', ['content-type' => 'application/x-www-form-urlencoded;charset=utf-8', 'authorization' => "Bearer {$tokenResponse->access_token}"], []);
 		$accountResponse = json_decode($accountResponse) ?? [];
-$this->infoLog($accountResponse);
-		$rows = $this->databaseLibrary->executeQuery("select memberNo, memberName, activeState from member where socialType = 'kakao' and activeState < 3 and socialId = :kakaoId", [':kakaoId' => $accountResponse->id]);
 
-		$isMember = count($rows) === 1;
-		if ($isMember) {
-			$this->login($rows[0]['memberNo']);
-			return $response->withAddedHeader('authorization', 'Bearer '.$_SESSION['accessToken'])->withJson(['isMember' => true, 'refreshToken' => $_SESSION['refreshToken'], 'userInfo' => $rows[0]]);
+		if ($accountResponse->code === -401) {
+			return $response->withStatus(401, $accountResponse->msg)->withJson(['message' => '카카오 인증 코드가 유효하지 않습니다.']);
 		} else {
-			return $response->withJson(['isMemberr' => false, 'kakaoAccount' => $accountResponse]);
+			$rows = $this->databaseLibrary->executeQuery("select memberNo, memberName, activeState from member where socialType = 'kakao' and socialId = :kakaoId  and activeState < 3", [':kakaoId' => $accountResponse->id]);
+			if (count($rows) === 1) {
+				$this->login($rows[0]['memberNo']);
+				return $response->withAddedHeader('authorization', 'Bearer ' . $_SESSION['accessToken'])->withJson(['isMember' => true, 'refreshToken' => $_SESSION['refreshToken'], 'userInfo' => $rows[0]]);
+			} else {
+				return $response->withJson(['isMember' => false, 'kakaoAccount' => $accountResponse]);
+			}
 		}
 	}
 }

@@ -1,13 +1,16 @@
+// import {mapMutations} from "vuex";
+
 export default {
 	name: "Login",
 	data() {
 		return {
-			autoLoginCheck: false,
+			autoLoginCheck: true,
 			code: this.$route.query.code
 		}
 	},
 	inject: ['showDialogue'],
 	methods: {
+		// ...mapMutations({setMember: 'SET_MEMBER'}),
 		kakaoLoginRequest() {
 			this.$cookie.set('loginType', 'kakao');
 			Kakao.Auth.authorize({
@@ -22,15 +25,18 @@ export default {
 			.then(response => {
 				if (response.data.isMember) {
 					this.loginComplete(response.data.refreshToken)
+					this.$store.commit('member/SET_MEMBER', response.data.userInfo)
 				} else {
-					this.showDialogue({type: 'confirm', message: '샐러몬북의 회원이 아닙니다.<br>회원가입 후 이용하시겠습니까?'}).then(response => {
-						if (response) {
+					this.showDialogue({type: 'confirm', message: '티끌 모아 쓰는 가계부의 회원이 아닙니다.<br>회원가입 후 이용하시겠습니까?'}).then(btnResponse => {
+						if (btnResponse) {
 							this.joinMember(response.data.kakaoAccount);
-						} else {
-							this.$cookie.set('loginType');
 						}
 					});
 				}
+			}).catch(error => {
+				this.showDialogue({message: error.data.message});
+			}).finally(() => {
+				this.$cookie.set('loginType');
 			});
 		},
 		joinMember(accountInfo) {
@@ -41,7 +47,12 @@ export default {
 						kakaoAccount: accountInfo
 					})
 					.then(response => {
-
+						if (response.data.isMember) {
+							this.loginComplete(response.data.refreshToken);
+							this.$store.commit('member/SET_MEMBER', response.data.userInfo)
+						} else {
+							this.showDialogue({message: '회원가입을 실패하였습니다.'});
+						}
 					});
 					break;
 			}

@@ -11,19 +11,6 @@ import '@/common/script/prototypes'
 moment.locale('ko');
 const CancelToken = axios.CancelToken;
 let source = CancelToken.source();
-
-Vue.config.productionTip = false;
-Vue.prototype.$moment = moment;
-Vue.prototype.$cookie = cookie;
-Vue.prototype.$axios = axios;
-Kakao.init('27341437aa1a4aa4a8c0a8dea1c71e41');
-
-const rootVue = new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
-
 axios.defaults.baseURL = '/api';
 axios.interceptors.request.use(config => {
       config.cancelToken = source.token;
@@ -64,3 +51,15 @@ axios.interceptors.response.use(response => {
       }
     }
 );
+
+Vue.config.productionTip = false;
+Vue.prototype.$moment = moment;
+Vue.prototype.$cookie = cookie;
+Vue.prototype.$axios = axios;
+Kakao.init('27341437aa1a4aa4a8c0a8dea1c71e41');
+
+const rootVue = new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app');

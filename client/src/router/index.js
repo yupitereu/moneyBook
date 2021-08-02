@@ -21,14 +21,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "Login" */ '@/views/Member/Login.vue')
   },
   {
-    path: '*',
-    name: 'PageNotFound',
-    component: () => import(/* webpackChunkName: "PageNotFound" */ '@/views/Main/PageNotFound.vue')
-  },
-  {
     path: '/styleGuide',
     name: 'StyleGuide',
     component: () => import(/* webpackChunkName: "StyleGuide" */ '@/views/Main/StyleGuide.vue')
+  },
+  {
+    path: '*',
+    name: 'PageNotFound',
+    component: () => import(/* webpackChunkName: "PageNotFound" */ '@/views/Main/PageNotFound.vue')
   }
 ]
 
@@ -46,9 +46,5 @@ VueRouter.prototype.push = async function (location) {
     if (error.name !== 'NavigationDuplicated') throw error;
   }
 };
-
-router.beforeEach((to, from, next) => {
-  next();
-});
 
 export default router

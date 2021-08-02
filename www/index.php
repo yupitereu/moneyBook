@@ -29,11 +29,10 @@ $middleWare = function ($request, $response, $next) use ($container) {
 	// 컨트롤러 수행 전 실행할 코드
 	session_start();
 
-	$jwtPassList = ['/api/member/kakaoAuthComplete', 'api/member/joinMember'];
+	$jwtPassList = ['/api/member/kakaoAuthComplete', '/api/member/joinMember'];
 	if (strpos($request->getUri()->getPath(), '/api/') === 0 && in_array($request->getUri()->getPath(), $jwtPassList) === false) {
 		$MemberClass = new Member($container);
 		$authResult = $MemberClass->jwtAuthorization();
-
 		if ($authResult === false) {
 			return $response->withStatus(401, 'Not member');
 		}
