@@ -1,3 +1,343 @@
+
+
+/**
+common
+ */
+.flex {
+	@include flexCenter;
+}
+.hidden {
+	text-align:center;
+	font-size:0;
+}
+
+/**
+style
+ */
+/* button */
+.btn {
+	display:inline-flex;
+	width:auto;
+	background-color:$bg-gray;
+	align-items:center;
+	justify-content: center;
+	text-align:center;
+	height:4.4rem;
+	border-radius: 2.2rem;
+	cursor:pointer;
+	@include bd(1px,solid,transparent);
+	@include effect;
+	&:focus,
+	&:active  {
+		background:rgba(17,17,17,0.3);
+		color:$white;
+	}
+	/* btn 크기 */
+	&-xl {
+		height:6rem;
+		border-radius: 3rem;
+	}
+	&-lg {
+		height:5.2rem;
+		border-radius: 2.6rem;
+	}
+	&-sm {
+		height:4rem;
+		border-radius: 2rem;
+	}
+	&-xs {
+		height:2.8rem;
+		border-radius: 1.4rem;
+	}
+	/* 색상 */
+	&-primary {
+		background-color:$primary;
+		color:$white;
+	}
+	&-secondary {
+		background-color:$secondary;
+	}
+	&-disabled {
+		background-color:$bg-gray;
+		color:$light-gray;
+	}
+	/* line style */
+	&-line {
+		border-color:$dark;
+		background-color:$white;
+		color:$dark;
+		&-primary {
+			background-color:$white;
+			border-color:$primary;
+			color:$primary;
+		}
+		&-secondary {
+			background-color:$white;
+			border-color:$secondary;
+			color:$secondary;
+		}
+		&-disabled {
+			background-color:$bg-gray;
+			border-color:$box-outline;
+			color:$light-gray;
+		}
+	}
+
+	/* btn 형태 */
+	&-ra {
+		border-radius: 50%;
+	}
+	&-block {
+		width:100%;
+	}
+	&-square {
+		border-radius: .4rem;
+	}
+	&-transparent {
+		background-color:transparent !important;
+	}
+}
+/* border */
+.bd {
+	@include bd(1px, solid, $box-outline);
+	&-top {
+		border-top:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-bottom {
+		border-bottom:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-left {
+		border-left:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+	&-right {
+		border-right:1px solid $box-outline;
+		box-sizing: border-box;
+	}
+}
+/* color */
+.primary {
+	color:$primary;
+}
+.dark-primary {
+	color:$primary-dark;
+}
+.secondary {
+	color:$secondary;
+}
+.third {
+	color:$third;
+}
+.danger {
+	color:$danger;
+}
+.white {
+	color:$white;
+}
+.black {
+	color:$black;
+}
+.medium-gray {
+	color:$medium-gray;
+}
+.gray {
+	color:$gray;
+}
+.light-gray {
+	color:$light-gray;
+}
+.point1 {
+	color:$point1;
+}
+
+.bg {
+	&-primary {
+		background-color:$primary;
+		color:$white;
+		&-dark {
+			backgorund-color:$primary-dark;
+		}
+	}
+	&-secondary {
+		background-color:$secondary;
+		color:$white;
+	}
+	&-dark {
+		background-color:$dark;
+		color:$white;
+	}
+	&-gray {
+		background-color:$bg-gray;
+	}
+}
+
+/**
+* input
+ */
+/* on/off checkbox */
+.btn-switch {
+	position: relative;
+	display: inline-block;
+	width: 6rem;
+	height: 3.2rem;
+	input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	.onoff-switch {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius:20px;
+		background-color: $gray;
+		-webkit-transition: .4s;
+		transition: .4s;
+		&:before {
+			position: absolute;
+			content: "";
+			height: 22px;
+			width: 22px;
+			left: 4px;
+			bottom: 4px;
+			background-color: $white;
+			-webkit-transition: .5s;
+			transition: .4s;
+			border-radius:50%;
+		}
+	}
+	input:checked + .onoff-switch {
+		background-color: $primary;
+	}
+	input:checked + .onoff-switch:before {
+		-webkit-transform: translateX(2.8rem);
+		-ms-transform: translateX(2.8rem);
+		transform: translateX(2.8rem);
+	}
+}
+
+/* checkbox */
+.input-check {
+	display: inline-block;
+	position: relative;
+	padding-left: 3.2rem;
+	cursor: pointer;
+	font-size:1.6rem;
+	line-height: 2.8rem;
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+	.checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 2.8rem;
+		width: 2.8rem;
+		background-color: $bg-gray;
+		border-radius: .4rem;
+	}
+}
+.input-check:hover input ~ .checkmark {
+	background-color: $medium-gray;
+}.input-check input:checked ~ .checkmark {
+	background-color: $primary;
+}.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+.input-check input:checked ~ .checkmark:after {
+	display: block;
+}
+.input-check .checkmark:after {
+	left: 1rem;
+	top:.5rem;
+	width: .8rem;
+	height: 1.4rem;
+	@include bd(1px, solid, $white);
+	border-width: 0 .2rem .2rem 0;
+	-webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/* radio */
+.input-radio {
+	display: inline-block;
+	position: relative;
+	padding-left: 3.2rem;
+	cursor: pointer;
+	font-size:1.6rem;
+	line-height: 2.8rem;
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+	.radiomark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 2.8rem;
+		width: 2.8rem;
+		background-color: $bg-gray;
+		border-radius: 50%;
+	}
+}
+.input-radio:hover input ~ .radiovmark {
+	background-color: $medium-gray;
+}
+.input-radio input:checked ~ .radiomark {
+	 background-color: $primary;
+ }
+.radiomark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+  }
+.input-radio input:checked ~ .radiomark:after {
+	display: block;
+}
+.input-radio .radiomark:after {
+	left: .8rem;
+	top:.8rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 50%;
+	background-color:$white;
+}
+
+
+
+/**
+layout
+ */
+html {
+	font-size:10px;
+}
+body {
+	font-size:1.4rem;
+}
+
+
+
+
+/**
+back up
+ */
+
 * {
 	margin: 0;
 	padding: 0;

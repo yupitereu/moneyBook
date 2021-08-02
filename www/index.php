@@ -1,5 +1,6 @@
 <?php
 
+use apiClasses\Member;
 use Slim\App;
 use Slim\Views\PhpRenderer;
 
@@ -22,31 +23,25 @@ $container = $app->getContainer();
 $container['view'] = function () {
 	return new PhpRenderer('dist/');
 };
-$container['notFoundHandler'] = function ($container) {
-	return function ($request, $response) use ($container) {
-		return $response->withJson(['status'=>404, 'msg'=>'page not found'], 404);
-	};
-};
-//$container['errorHandler'] = function ($container) {
-//	return function ($request, $response, $exception) use ($container) {
-//		return $response->withJson(['status'=>500, 'msg'=>'unknown error'], 500);
-//	};
-//};
-//
-//$container['phpErrorHandler'] = function ($container) {
-//	return $container['errorHandler'];
-//};
 
 // ------------------------------------- middleWare -------------------------------------
-$middleWare = function ($request, $response, $next) {
+$middleWare = function ($request, $response, $next) use ($container) {
 	// 컨트롤러 수행 전 실행할 코드
 	session_start();
 
+	$jwtPassList = ['/api/member/kakaoAuthComplete', '/api/member/joinMember'];
+	if (strpos($request->getUri()->getPath(), '/api/') === 0 && in_array($request->getUri()->getPath(), $jwtPassList) === false) {
+		$MemberClass = new Member($container);
+		$authResult = $MemberClass->jwtAuthorization();
+		if ($authResult === false) {
+			return $response->withStatus(401, 'Not member');
+		}
+	}
 	return $next($request, $response); // router 매핑
 };
 
 // ------------------------------------- route -------------------------------------
-// api/v2 로 요청시는 controller 의 method 에 자동 매핑
+// api 로 요청시는 controller 의 method 에 자동 매핑
 $app->any('/api/{apiClassName}/{methodName}', function ($request, $response, $args) use ($container) {
 	$apiClassName = $args['apiClassName'] ?? 'Sample';
 	$apiClassName = 'apiClasses\\'. ucfirst($apiClassName);
@@ -64,7 +59,7 @@ $app->any('/api/{apiClassName}/{methodName}', function ($request, $response, $ar
 	}
 })->add($middleWare);
 
-$indexMapper = function ($request, $response, $args) {
+$indexMapper = function ($request, $response) {
 	return $this->view->render($response, 'index.html');
 };
 

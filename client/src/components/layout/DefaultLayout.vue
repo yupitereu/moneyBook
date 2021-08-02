@@ -2,18 +2,18 @@
 	<div>
 		<HeaderUI/>
 		<main>
-			<router-view></router-view>
+			<router-view/>
 		</main>
 		<FooterUI/>
 	</div>
 </template>
 
 <script>
-import HeaderUI from "@/components/layout/HeaderUI";
-import FooterUI from "@/components/layout/FooterUI";
+import FooterUI from "@/components/layout/FooterUI.vue";
+import HeaderUI from "@/components/layout/HeaderUI.vue";
 
 export default {
-	name: "defaultLayout",
+	name: "DefaultLayout",
 	components: {
 		HeaderUI,
 		FooterUI

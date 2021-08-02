@@ -1,6 +1,6 @@
 <template>
-	<footer>aaa</footer>
+	<footer>This is Footer</footer>
 </template>
 
-<script src="./script/FooterUI.js" />
-<style src="./style/FooterUi.scss" lang="scss" scoped />
+<script src="./FooterUI.js" />
+<style src="./FooterUi.scss" lang="scss" scoped />

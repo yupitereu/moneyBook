@@ -21,9 +21,9 @@ class Sample {
 	function call($request, $response) {
 		$rows = $this->databaseLibrary->executeQuery('select * from member where 1=1');
 		// success case
-		return $response->withJson($rows);
+		return $response->withAddedHeader('authorization', 'Bearer '.$_SESSION['accessToken'])->withJson($rows);
 
 		// error case
-		// return $response->withStatus(500, 'error test')->withJson($rows);
+//		 return $response->withStatus(401, 'Not member')->withJson($rows);
 	}
 }
