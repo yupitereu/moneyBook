@@ -81,6 +81,24 @@
     </div>
     <!-- //box -->
 
+
+
+    <!-- box -->
+    <div class="box">
+      <div class="box-title">font size</div>
+      <div class="box-cont">
+        <p class="txt-xxl">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-xl">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-lg">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-rg">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-sm">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-ti">폰트 크기를 확인할 수 있습니다</p>
+        <p class="txt-bold">폰트 굵기를 확인할 수 있습니다</p>
+        <p class="txt-bold primary">높이값에 대한 정의는 variable.scss를 참고해주세요</p>
+      </div>
+    </div>
+    <!-- //box -->
+
     <!-- box -->
     <div class="box">
       <div class="box-title">on/off checkbox</div>

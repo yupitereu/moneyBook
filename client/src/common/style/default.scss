@@ -23,7 +23,7 @@ style
 	align-items:center;
 	justify-content: center;
 	text-align:center;
-	height:4.4rem;
+	height:$block-rg;
 	border-radius: 2.2rem;
 	cursor:pointer;
 	@include bd(1px,solid,transparent);
@@ -35,19 +35,19 @@ style
 	}
 	/* btn 크기 */
 	&-xl {
-		height:6rem;
+		height:$block-xl;
 		border-radius: 3rem;
 	}
 	&-lg {
-		height:5.2rem;
+		height:$block-lg;
 		border-radius: 2.6rem;
 	}
 	&-sm {
-		height:4rem;
+		height:$block-sm;
 		border-radius: 2rem;
 	}
 	&-xs {
-		height:2.8rem;
+		height:$block-ti;
 		border-radius: 1.4rem;
 	}
 	/* 색상 */
@@ -87,18 +87,18 @@ style
 	/* btn 형태 */
 	&-ra {
 		border-radius: 50%;
-		width:4.4rem;
+		width:$block-rg;
 		&.btn-xl {
-			width:6rem;
+			width:$block-xl;
 		}
 		&.btn-rg {
-			width:5.2rem;
+			width:$block-lg;
 		}
 		&.btn-sm {
-			width:4rem;
+			width:$block-sm;
 		}
 		&.btn-ti {
-			width:2.8rem;
+			width:$block-ti;
 		}
 	}
 	&-block {
@@ -188,13 +188,40 @@ style
 }
 
 /**
+* font
+ */
+.txt {
+	&-xxl {
+		font-size:$font-xxl;
+	}
+	&-xl {
+		 font-size:$font-xl;
+	}
+	&-lg {
+		font-size:$font-lg;
+	}
+	&-rg {
+		font-size:$font-rg;
+	}
+	&-sm {
+		font-size:$font-sm;
+	}
+	&-ti {
+		font-size:$font-ti;
+	}
+	&-bold {
+		font-weight: bold;
+	}
+}
+
+/**
 * input
  */
 /* on/off checkbox */
 .btn-switch {
 	position: relative;
 	display: inline-block;
-	width: 6rem;
+	width: $block-xl;
 	height: 3.2rem;
 	input {
 		opacity: 0;
@@ -229,9 +256,9 @@ style
 		background-color: $primary;
 	}
 	input:checked + .onoff-switch:before {
-		-webkit-transform: translateX(2.8rem);
-		-ms-transform: translateX(2.8rem);
-		transform: translateX(2.8rem);
+		-webkit-transform: translateX($block-ti);
+		-ms-transform: translateX($block-ti);
+		transform: translateX($block-ti);
 	}
 }
 
@@ -242,7 +269,7 @@ style
 	padding-left: 3.2rem;
 	cursor: pointer;
 	font-size:1.6rem;
-	line-height: 2.8rem;
+	line-height: $block-ti;
 	input {
 		position: absolute;
 		opacity: 0;
@@ -254,8 +281,8 @@ style
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 2.8rem;
-		width: 2.8rem;
+		height: $block-ti;
+		width: $block-ti;
 		background-color: $bg-gray;
 		border-radius: .4rem;
 	}
@@ -292,7 +319,7 @@ style
 	padding-left: 3.2rem;
 	cursor: pointer;
 	font-size:1.6rem;
-	line-height: 2.8rem;
+	line-height: $block-ti;
 	input {
 		position: absolute;
 		opacity: 0;
@@ -304,8 +331,8 @@ style
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 2.8rem;
-		width: 2.8rem;
+		height: $block-ti;
+		width: $block-ti;
 		background-color: $bg-gray;
 		border-radius: 50%;
 	}
