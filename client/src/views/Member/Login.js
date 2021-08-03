@@ -35,13 +35,13 @@ export default {
 				}
 			}).catch(error => {
 				this.showDialogue({message: error.data.message});
-			}).finally(() => {
 				this.$cookie.set('loginType');
-			});
+			})
 		},
 		joinMember(accountInfo) {
 			switch (this.$cookie.get('loginType')) {
 				case 'kakao':
+					console.log('kakao');
 					this.$axios.post('/member/joinMember', {
 						socialType: 'kakao',
 						kakaoAccount: accountInfo
@@ -53,7 +53,9 @@ export default {
 						} else {
 							this.showDialogue({message: '회원가입을 실패하였습니다.'});
 						}
-					});
+					}).finally(() => {
+						this.$cookie.set('loginType');
+					});;
 					break;
 			}
 		},
