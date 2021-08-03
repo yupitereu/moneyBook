@@ -4,12 +4,13 @@
     <div id="login-content" class="flex">
       <p class="txt-area flex">
         쉽고 편리하게<br />
-        나의 자산을         <div v-if="false" class="btn btn-lg btn-block btn-apple"><span class="ico"></span>Apple로 이용하기</div>
-      관리하세요
+        나의 자산을 관리하세요
       </p>
       <div id="sns-area">
         <div class="btn btn-lg btn-block btn-kakao" @click="kakaoLoginRequest"><span class="ico"></span>카카오톡으로 이용하기</div>
+        <div v-if="false" class="btn btn-lg btn-block btn-apple"><span class="ico"></span>Apple로 이용하기</div>
         <p class="txt flex">또는</p>
+
         <div class="btn-area">
             <div class="btn btn-ra btn-xl btn-naver"><span class="ico"></span><span class="hidden">Naver로 이용하기</span></div>
             <div class="btn btn-ra btn-xl btn-ra btn-google"><span class="ico"></span><span class="hidden">Google로 이용하기</span></div>
