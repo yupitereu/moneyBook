@@ -17,6 +17,7 @@ style
 /* button */
 .btn {
 	display:inline-flex;
+	position:relative;
 	width:auto;
 	background-color:$bg-gray;
 	align-items:center;
@@ -86,6 +87,19 @@ style
 	/* btn 형태 */
 	&-ra {
 		border-radius: 50%;
+		width:4.4rem;
+		&.btn-xl {
+			width:6rem;
+		}
+		&.btn-rg {
+			width:5.2rem;
+		}
+		&.btn-sm {
+			width:4rem;
+		}
+		&.btn-ti {
+			width:2.8rem;
+		}
 	}
 	&-block {
 		width:100%;

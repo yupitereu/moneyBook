@@ -19,3 +19,8 @@
 @mixin effect {
 	transition:all 0.5 ease-in-out;
 }
+@mixin position($position,$top,$left) {
+	position:$position;
+	top:$top;
+	left:$left;
+}

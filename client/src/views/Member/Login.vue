@@ -11,8 +11,8 @@
         <div v-if="false" class="btn btn-lg btn-block btn-apple"><span class="ico"></span>Apple로 이용하기</div>
         <p class="txt flex">또는</p>
         <div class="btn-area">
-            <div class="btn btn-xl btn-naver"><span class="ico"></span><span class="hidden">Naver로 이용하기</span></div>
-            <div class="btn btn-xl btn-ra btn-google"><span class="ico"></span><span class="hidden">Google로 이용하기</span></div>
+            <div class="btn btn-ra btn-xl btn-naver"><span class="ico"></span><span class="hidden">Naver로 이용하기</span></div>
+            <div class="btn btn-ra btn-xl btn-ra btn-google"><span class="ico"></span><span class="hidden">Google로 이용하기</span></div>
         </div>
       </div>
 
@@ -59,6 +59,10 @@
 #sns-area {
   flex:2 1 0;
 }
+#sns-area .btn-kakao,
+#sns-area .btn-apple {
+  max-width: 40rem;
+}
 #sns-area .btn-kakao {
   background-color:#FFE716;
   color:#333;
@@ -101,6 +105,31 @@
 }
 #sns-area .btn-area .btn-google {
   background-color:#F23921;
+}
+
+#sns-area .btn .ico {
+  background:url("~@/assets/ico-login@2x.png") 0 0 no-repeat;
+  background-size: 138px 39px;
+  width:2.4rem;
+  height:2.4rem;
+}
+#sns-area .btn-kakao .ico,
+#sns-area .btn-apple .ico {
+ position:absolute;
+  top:1.2rem;
+  left:2rem;
+}
+#sns-area .btn-kakao .ico {
+  background-position: 0 -8px;
+}
+#sns-area .btn-apple .ico {
+  background-position: -30px -8px;
+}
+#sns-area .btn-naver .ico {
+  background-position: -72px -8px;
+}
+#sns-area .btn-google .ico {
+  background-position: -114px -8px;
 }
 #login-footer {
   padding:20px 12px;
