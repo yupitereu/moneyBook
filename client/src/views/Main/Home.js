@@ -1,13 +1,31 @@
+import eventMixin from "@/common/script/event";
+
 export default {
 	name: 'Home',
+	mixins: [eventMixin],
 	data() {
 		return {
 			myData: 'Hey',
-			resolve: null
+			resolve: null,
+			queryValue: +this.$route.query.value || 0,
+			isShow: {
+				layerPopup: false
+			}
 		};
 	},
 	inject: ['showDialogue'],
 	methods: {
+		queryPlus() {
+			this.queryValue++;
+			// this.$router.push('/?value=' + this.queryValue).then(() => {
+			// 	console.log(111);
+			// });
+
+			this.$router.push('/');
+		},
+		globalClickAction (clickTarget) {
+			console.log('Home:', clickTarget);
+		}
 	},
 	created() {
 		const data = new FormData();

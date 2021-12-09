@@ -135,7 +135,6 @@ class Member
 		$this->login($memberNo);
 
 		$rows = $this->databaseLibrary->executeQuery("select memberNo, memberName, activeState from member where socialType = :socialType and activeState < 3 and socialId = :kakaoId", [':socialType' => $param['socialType'], ':kakaoId' => $param['kakaoAccount']['id']]);
-		$this->infoLog($rows);
 		if (count($rows) === 1) {
 			return $response->withAddedHeader('authorization', 'Bearer ' . $_SESSION['accessToken'])->withJson(['isMember' => true, 'refreshToken' => $_SESSION['refreshToken'], 'userInfo' => $rows[0]]);
 		} else {

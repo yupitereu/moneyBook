@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		{{ myData }}
+		<span @click="queryPlus">{{ myData }}</span>
 	</div>
 </template>
 

@@ -7,8 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    clickTarget: null
+  },
+  getters: {
+    CLICK_TARGET: (state) => state.clickTarget
   },
   mutations: {
+    SET_CLICK_TARGET: (state, payload) => {
+      state.clickTarget = payload
+    }
   },
   actions: {
   },
