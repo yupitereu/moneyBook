@@ -1,10 +1,24 @@
-
+/**
+layout
+ */
+* {
+	margin: 0;
+}
+html {
+	font-size:10px;
+}
+body {
+	font-size:1.4rem;
+}
 
 /**
 common
  */
 .flex {
 	@include flexCenter;
+	&-column {
+		flex-direction: column;
+	}
 }
 .hidden {
 	text-align:center;
@@ -53,6 +67,10 @@ style
 	/* 색상 */
 	&-primary {
 		background-color:$primary;
+		color:$white;
+	}
+	&-dark {
+		background-color:$primary-darker;
 		color:$white;
 	}
 	&-secondary {
@@ -169,21 +187,26 @@ style
 .bg {
 	&-primary {
 		background-color:$primary;
-		color:$white;
+		color: $white;
 		&-dark {
-			backgorund-color:$primary-dark;
+			background-color:$primary-dark;
+			color: $white;
 		}
 	}
 	&-secondary {
 		background-color:$secondary;
-		color:$white;
+		color: $white;
 	}
 	&-dark {
 		background-color:$dark;
-		color:$white;
+		color: $white;
 	}
 	&-gray {
 		background-color:$bg-gray;
+	}
+	&-white {
+		background-color:$white;
+		color: $black;
 	}
 }
 
@@ -208,6 +231,9 @@ style
 	}
 	&-ti {
 		font-size:$font-ti;
+	}
+	&-medium {
+		font-weight: 500;
 	}
 	&-bold {
 		font-weight: bold;
@@ -361,44 +387,8 @@ style
 }
 
 
-
-/**
-layout
- */
-html {
-	font-size:10px;
-}
-body {
-	font-size:1.4rem;
-}
-
-
-
-
-/**
-back up
- */
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-//font
-.bolder {
-	font-weight: bold;
-}
-.lighter {
-	font-weight: normal;
-}
-
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
+	font-family: "Noto Sans CJK KR", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
@@ -411,6 +401,15 @@ ul {
 	.fade-enter, .fade-leave, .fade-leave-active {
 		opacity: 0;
 	}
+
+	.slide-down-enter-active {
+		transition: all 1s ease;
+	}
+	.slide-down-leave-active {
+		transition: all 0.3s ease-out;
+	}
+	.slide-down-enter, .slide-down-leave-to {  overflow: hidden; max-height: 0 !important; }
+	.slide-down-leave, .slide-down-enter-to {  overflow: hidden; max-height: 800vw;}
 }
 
 [role=button] {

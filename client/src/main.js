@@ -14,7 +14,7 @@ Vue.prototype.$cookie = cookie;
 Vue.prototype.$axios = axios;
 Kakao.init('27341437aa1a4aa4a8c0a8dea1c71e41');
 
-const rootVue = new Vue({
+window.app = new Vue({
   router,
   store,
   render: h => h(App)

@@ -4,7 +4,7 @@
 		<div class="month-selection">
 			<span role="button" class="material-icons month-operator" @click="selectedMonthChange(-1)">arrow_left</span>
 			<span>
-				<input ref="monthSelector" type="month" v-model="selectedYearMonth"/>
+				<input ref="monthSelector" class="txt-rg txt-bold" type="month" v-model="selectedYearMonth"/>
 <!--				<select class="month-picker" v-model="selectedYear">-->
 <!--					<option v-for="year in +$moment().add(10, 'years').format('YYYY')" :key="year" :value="year">{{ year.toString().lpad('0', 4) }}</option>-->
 <!--				</select>-->

@@ -53,9 +53,7 @@ class Member
 				$refreshTokenData = JWT::decode($refreshToken, $this->secretKey2, ['HS512']);
 				$accessToken = $this->createJwtToken('accessToken', $refreshTokenData->memberNo);
 				$_SESSION['memberNo'] = $refreshTokenData->memberNo;
-			} catch (BeforeValidException $e) {
-				return false;
-			} catch (SignatureInvalidException $e) {
+			} catch (BeforeValidException|SignatureInvalidException $e) {
 				return false;
 			}
 
@@ -86,6 +84,7 @@ class Member
 	/**
 	 * @param string $tokenType
 	 * @param int $memberNo
+	 * @return string
 	 */
 	public function createJwtToken(string $tokenType, int $memberNo): string
 	{
@@ -108,7 +107,7 @@ class Member
 
 	/**
 	 * @param $memberNo
-	 * @return mixed
+	 * @return void
 	 */
 	public function login($memberNo)
 	{

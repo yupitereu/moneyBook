@@ -1,7 +1,10 @@
 import eventMixin from "@/common/script/event";
+import HomeCompBoard from "@/components/mixture/HomeCompBoard";
+import HomeRemainBoard from "@/components/outgoing/HomeRemainBoard";
 
 export default {
 	name: 'Home',
+	components: {HomeCompBoard, HomeRemainBoard},
 	mixins: [eventMixin],
 	data() {
 		return {
@@ -15,16 +18,8 @@ export default {
 	},
 	inject: ['showDialogue'],
 	methods: {
-		queryPlus() {
-			this.queryValue++;
-			// this.$router.push('/?value=' + this.queryValue).then(() => {
-			// 	console.log(111);
-			// });
-
-			this.$router.push('/');
-		},
 		globalClickAction (clickTarget) {
-			console.log('Home:', clickTarget);
+			// console.log('Home:', clickTarget);
 		}
 	},
 	created() {

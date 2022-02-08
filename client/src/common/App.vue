@@ -27,6 +27,7 @@ export default {
 		}
 	},
 	computed: {
+		...mapGetters({allCategory: 'ALL_CATEGORY'}),
 		...mapGetters('member', {memberInfo: 'GET_MEMBER'}),
 	},
 	provide() {
@@ -36,7 +37,7 @@ export default {
 		}
 	},
 	methods: {
-		...mapMutations({setClickTarget: 'SET_CLICK_TARGET'}),
+		...mapMutations({setClickTarget: 'SET_CLICK_TARGET', setAllCategory: 'SET_All_CATEGORY'}),
 		/**
 		 * alert, confirm, prompt 출력
 		 * @param data
@@ -103,23 +104,48 @@ export default {
 					}
 			);
 		},
-		getMemberData() {
+		/**
+		 * 서버에 회원정보 요청
+		 * @returns {Promise<AxiosResponse<any>>}
+		 */
+		requestMemberData() {
 			if (this.memberInfo.no === 0 && ['/member/login', '/pageNotFound', '/styleGuide'].includes(window.location.pathname) === false) {
-				this.$axios.post('/member/getMemberInfo').then(response => {
+				return this.$axios.post('/member/getMemberInfo').then(response => {
 					if (response.data.isMember) {
 						this.$store.commit('member/SET_MEMBER', response.data.userInfo);
 					}
 				});
 			}
+		},
+		/**
+		 * 서버에 수입/지출 관련 카테고리 목록 요청
+		 */
+		requestAccountCategory() {
+			this.$axios.post('/account/getAccountCategory').then(response => {
+				if (response.data.length) {
+					this.allCategory.sub = {
+						income: [{key: '0', categoryName: '전체'}],
+						outgoing: [{key: '0', categoryName: '전체'}]
+					};
+
+					for (const category of response.data) {
+						this.allCategory.sub[category.type].push({key: category.categoryNo, categoryName: category.categoryName})
+					}
+					this.setAllCategory(this.allCategory);
+				}
+			});
 		}
 	},
-	created () {
+	async created () {
 		this.axiosConfig();
 		this.$router.beforeEach((to, from, next) => {
 			next();
 		});
 
-		this.getMemberData();
+		await this.requestMemberData();
+		if (this.memberInfo.no > 0) {
+			this.requestAccountCategory();
+		}
 	}
 }
 </script>

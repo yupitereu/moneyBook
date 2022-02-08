@@ -22,7 +22,6 @@ header {
 			-webkit-appearance:none;
 			-moz-appearance:none;
 			appearance: none;
-			font-size: 15px;
 		}
 		.month-operator {
 			z-index: 10;
@@ -46,6 +45,7 @@ header {
 	input[type="month"] {
 		border: none;
 		background: transparent;
+		font-family: "Noto Sans KR", sans-serif;
 		text-align: center;
 		text-align: -webkit-center;
 		padding: 0;

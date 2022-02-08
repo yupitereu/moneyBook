@@ -20,7 +20,7 @@ export default {
 				this.selectedYearMonth = `${this.$moment().year()}-${(this.$moment().month() + 1).lpad('0', 2)}`;
 			}
 			this.$refs.monthSelector.blur();
-			this.$store.commit('headerUI/SET_YEAR_MONTH', newVal);
+			this.$store.commit('SET_YEAR_MONTH', newVal);
 		}
 	},
 	methods: {
