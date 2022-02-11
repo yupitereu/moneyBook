@@ -19,6 +19,12 @@ common
 	&-column {
 		flex-direction: column;
 	}
+	&-align-center {
+		align-items: center;
+	}
+	&-justify-between {
+		justify-content: space-between;
+	}
 }
 .hidden {
 	text-align:center;

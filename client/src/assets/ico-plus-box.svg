@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<g id="icon" transform="translate(-109 -362)" opacity="0.7">
+		<g id="사각형_53" transform="translate(109 362)" fill="none" stroke="#fff" stroke-width="1">
+			<rect width="24" height="24" rx="4" stroke="none"/>
+			<rect x="0.5" y="0.5" width="23" height="23" rx="3.5" fill="none"/>
+		</g>
+		<g id="plus" transform="translate(95.125 337.125)">
+			<path id="패스_50" d="M15.975,7.875a.9.9,0,0,1,.9.9v7.2a.9.9,0,0,1-.9.9h-7.2a.9.9,0,1,1,0-1.8h6.3v-6.3A.9.9,0,0,1,15.975,7.875Z" transform="translate(10 21)" fill="#fff" fill-rule="evenodd"/>
+			<path id="패스_51" d="M16.875,17.775a.9.9,0,0,1,.9-.9h7.2a.9.9,0,0,1,0,1.8h-6.3v6.3a.9.9,0,0,1-1.8,0Z" transform="translate(8 19)" fill="#fff" fill-rule="evenodd"/>
+		</g>
+	</g>
+</svg>

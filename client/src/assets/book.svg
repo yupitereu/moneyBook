@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22.286" viewBox="0 0 24 22.286">
+	<g id="아이콘" transform="translate(9 -488)">
+		<g id="wallet" transform="translate(-9 488)">
+			<path id="패스_35" d="M3.964,9V23.561a2.57,2.57,0,0,0,2.571,2.57H23.679a.857.857,0,0,0,.857-.857V11.57a.857.857,0,0,1,1.714,0v13.7a2.57,2.57,0,0,1-2.571,2.57H6.536A4.284,4.284,0,0,1,2.25,23.561V9Z" transform="translate(-2.25 -5.558)" fill="#666" fill-rule="evenodd"/>
+			<path id="패스_36" d="M2.25,7.942A3.435,3.435,0,0,1,5.679,4.5H25.393a.861.861,0,0,1,0,1.721H5.679a1.721,1.721,0,0,0,0,3.442H25.393v1.721H5.679A3.435,3.435,0,0,1,2.25,7.942Z" transform="translate(-2.25 -4.5)" fill="#666" fill-rule="evenodd"/>
+			<path id="패스_37" d="M29.25,10.192V6.75h1.721v3.442Z" transform="translate(-8.692 -5.029)" fill="#666" fill-rule="evenodd"/>
+		</g>
+	</g>
+</svg>

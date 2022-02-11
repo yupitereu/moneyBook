@@ -11,7 +11,7 @@
 		</div>
 		<div class="board-contents">
 			<transition name="slide-down">
-				<div class="show" v-if="isShow.contents">
+				<div :class="{'show': foldingButton}" v-if="isShow.contents">
 					<slot name="contents"/>
 				</div>
 			</transition>
@@ -44,6 +44,8 @@ export default {
 		align-self: flex-start;
 		width: inherit;
 		height: 6rem;
+		padding-top: 5px;
+		box-sizing: border-box;
 		.left {
 			text-align: left;
 			flex-grow: 3;
@@ -77,7 +79,7 @@ export default {
 		flex-grow: 1;
 		align-self: center;
 		text-align: right;
-		padding-right: 12px;
+		padding-right: 22px;
 		font-size: 2.4rem;
 	}
 	&-contents {

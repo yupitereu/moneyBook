@@ -77,6 +77,7 @@ export default {
 			padding: 0 12px 0 12px;
 			box-sizing: border-box;
 			&-contents {
+				text-align: left;
 				max-width: 100%;
 				white-space: nowrap;
 				overflow-x: auto;

@@ -1,10 +1,12 @@
 import eventMixin from "@/common/script/event";
 import HomeCompBoard from "@/components/mixture/HomeCompBoard";
 import HomeRemainBoard from "@/components/outgoing/HomeRemainBoard";
+import InformationBoardContents from "@/components/outgoing/InformationBoardContents";
+import AccountUnsettledMoney from "@/components/outgoing/AccountUnsettledMoney";
 
 export default {
 	name: 'Home',
-	components: {HomeCompBoard, HomeRemainBoard},
+	components: {HomeCompBoard, HomeRemainBoard, InformationBoardContents, AccountUnsettledMoney},
 	mixins: [eventMixin],
 	data() {
 		return {
